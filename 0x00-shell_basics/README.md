@@ -1,1 +1,1 @@
-Learnig new commands
+Learning Commands linux
