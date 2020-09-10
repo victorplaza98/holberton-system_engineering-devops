@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod a+rx+wx hello
+chmod 573 hello
