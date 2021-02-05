@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script is displaying "Holberton School" 10 times
 
-COUNT=1
+COUNT=0
 until [ "$COUNT" -eq 10 ]; do
 	echo "Holberton School"
 	COUNT=$(( COUNT+1 ))
