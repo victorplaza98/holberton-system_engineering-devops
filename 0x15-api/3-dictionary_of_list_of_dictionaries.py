@@ -12,17 +12,17 @@ if __name__ == '__main__':
     user_dict = {}
     username_dict = {}
     for user in users:
-        uid = user.get("id")
-        userdict[uid] = []
-        usernamedict[uid] = user.get("username")
+        user_id = user.get("id")
+        user_dict[user_id] = []
+        username_dict[user_id] = user.get("username")
     todo = requests.get("https://jsonplaceholder.typicode.com/todos",
                         verify=False).json()
     for task in todo:
         tasks_json = {}
-        uid = task.get("userId")
+        user_id = task.get("userId")
         tasks_json["task"] = task.get('title')
         tasks_json["completed"] = task.get('completed')
-        tasks_json["username"] = username_dict.get(uid)
-        user_dict.get(uid).append(tasks_json)
+        tasks_json["username"] = username_dict.get(user_id)
+        user_dict.get(user_id).append(tasks_json)
     with open("todo_all_employees.json", 'w') as jsonfile:
         json.dump(user_dict, jsonfile)
