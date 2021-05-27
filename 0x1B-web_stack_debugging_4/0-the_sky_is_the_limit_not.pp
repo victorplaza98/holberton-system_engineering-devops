@@ -1,8 +1,6 @@
 # fix number of request
-exec { 'More_Request':
-        command => 'sed -i s/15/1000/ /etc/default/nginx',
-        path => '/usr/local/bin/:/bin/'
- } -> exec { 'restart-nginx-service':
-  command => 'nginx restart',
-  path    => '/etc/init.d/'
+exec { 'fix file':
+  onlyif  => 'test -e /etc/default/nginx',
+  command => 'sed -i "5s/[0-9]\+/$( ulimit -n )/" /etc/default/nginx; service nginx restart',
+  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 }
